@@ -48,7 +48,7 @@ class callAPI {
             Bandwidth: bandwidth,
             Bandwidth_Used: bandwidthUsed,
             Daily_Hits: hits
-          };a
+          };
       }
     
     };
