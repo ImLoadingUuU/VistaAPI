@@ -2,7 +2,7 @@
 A 3rd Party VistaPanel API,Inspired by TinkerHost DNS Manager
 
 Recommened Server Requirements:
-- 1GB RAM (It will used by **Puppeteer** to render Dynamic Content)
+- 1GB RAM (It will used by **Puppeteer** to load Dynamic Content)
 
 </br>
 **This Project Use Apache License 2.0 🥰**
