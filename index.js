@@ -1,5 +1,6 @@
 const { getLogger } = require("./libs/fox-logger/logger");
 const express = require("express");
+const vistaAPI = require("./libs/vistaAPI/api")
 const app = express();
 const config = require("./config.json");
 app.use(express.urlencoded());
@@ -15,11 +16,13 @@ app.post('/getinfo',function(req,res){
   res.setHeader('Accept', 'application/json');
   var body = req.body;
   if (!body.username || !body.password) {
+
      res.json({
         message: 'Make sure you entered Username,Password'
      });
-     
+    
   }
+  
   
 });
 app.listen(config.port);

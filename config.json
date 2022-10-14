@@ -1,4 +1,8 @@
 {
     "port": 3000,
-    "panelURL": "https://cpanel.epizy.com"
+    "panelURL": "https://cpanel.epizy.com",
+    "MacSlicon": false,
+    "_MacSlicon": "What is this Choose?This Let Puppeteer choose ARM Version. (ONLY FOR M1)",
+    "PUPPETEER_PRODUCT": "chrome" ,
+    "_Puppter_Product": "Choose Browser You want to use for VistaAPI."
 }
