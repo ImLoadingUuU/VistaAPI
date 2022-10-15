@@ -1,43 +1,56 @@
-const { getLogger } = require("../libs/fox-logger/logger");
+const { getLogger } = require("../fox-logger/logger");
+const puppeteer = require("puppeteer")
 const cheerio = require("cheerio");
-import * as puppeteer from 'puppeteer-core';
-
-const config = require(".../config.json");
-const panelURL = `https://${config.panelURL}/panel/indexpl.php`;
+const config = require("../../config.json")
+const panelURL = `https://${config.panelURL}/panel/indexpl.php`
+// Variables
+var chromium;
 this.logger = getLogger('VistaAPI Main Module');
+this.logger.log('info','Loaded VistaAPI Main Module - Writen by MeTooIDK');
+//
+(async () => {
+  this.logger.log('info','Starting Chromium... Please Wait.')
+  chromium = await puppeteer.launch({
+    headless: false
+   }).catch(err => {
+      this.logger.log('error',err);
+   }).then(e => {
 
-this.logger('info','Loaded VistaAPI Main Module - Writen by MeTooIDK');
-this.logger('info','Starting Chromium...');
-
-
+   })
+   this.logger.log('info','Started Chromium.')
+})()
+ 
+function waitForChromium(){
+  do {
+    setTimeout(function(){
+      this.logger.log("info","Waiting for Chromium Start...")
+      waitForChromium()
+    },100)
+   
+  } while (!chromium);
+}
+ //
 class callAPI {
     
     constructor(username,password){
      this.username = username;
      this.password = password;
-
-    (async () => {
-      if (this.chromium_enabled){
-        return;
-       } else if(this.chromium_enabled == false){
-         this.chromium_enabled = true;
-         this.chromium = await puppeteer.launch();
-         
-       }
-    });
      
     }
+   
     async getAccountInfo(){
-      if (this.chromium_enabled == false) {
-        this.logger("error","Chromium Didnt'start!");
-        return false,{};
+    console.log(chromium)
+    waitForChromium()
+      if (!chromium) {
+        this.logger.log( "error","Chromium Didnt'start!");
+         return false,{};
       } 
 
-      const page = this.chromium.newPage();
+      const page = chromium.newPage();
       await page.goto(panelURL);
       const data = await page.evaluate(() => document.querySelector('*').outerHTML);
-      console.log(data)
-    
+      console.log(data);
+       
     }
     setDNS(){
 
