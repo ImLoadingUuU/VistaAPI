@@ -4,7 +4,8 @@ const child_process = require('child_process');
 const major = 6
 const minor = 0
 const patch = 1
-const commit = 0
+const commit = 1
+const commit_fix = "Fixed: package.json";
 const type = "b"
 const version = `v${major}.${minor}.${patch}${type} ${commit !== 0 ? `Commit ${commit}` : ""}`
 // Logger
@@ -21,6 +22,9 @@ function setEnv(name,value) {
 
 }
 this.logger.log('info',"Running " + version + " of VistaAPI " + major)
+if (commit !== "") {
+ this.logger.log('info','Commits: ' + commit_fix)
+}
 // Puppeteer Checker
 if (config.PUPPETEER_PRODUCT) {
  setEnv('PUPPETEER_PRODUCT',config.PUPPETEER_PRODUCT)
